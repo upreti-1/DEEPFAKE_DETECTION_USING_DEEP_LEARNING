@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deepfake Detection</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9fafb; color: #111; margin: 0; padding: 0; }
+        .container { max-width: 720px; margin: 40px auto; padding: 24px; background: #fff; border-radius: 12px; box-shadow: 0 18px 60px rgba(0,0,0,0.08); }
+        h1 { margin-top: 0; }
+        label { display: block; margin-top: 16px; font-weight: 600; }
+        input[type="file"], input[type="number"] { width: 100%; padding: 10px; margin-top: 8px; border: 1px solid #d1d5db; border-radius: 8px; }
+        button { margin-top: 20px; padding: 12px 20px; border: none; background: #2563eb; color: white; border-radius: 10px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #1d4ed8; }
+        .alert { margin-top: 20px; padding: 16px; border-radius: 10px; }
+        .success { background: #ecfdf5; color: #166534; border: 1px solid #a7f3d0; }
+        .error { background: #fbe4e6; color: #9b1c1c; border: 1px solid #fca5a5; }
+        .info { margin-top: 20px; color: #4b5563; }
+        .meta { font-size: 0.95rem; color: #6b7280; margin-top: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Deepfake Detection</h1>
+        <p>Upload a video and the model will return whether it appears <strong>REAL</strong> or <strong>FAKE</strong>.</p>
+
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <label for="file">Select video file</label>
+            <input type="file" name="file" id="file" accept="video/*" required />
+
+            <label for="sequence_length">Sequence length</label>
+            <input type="number" name="sequence_length" id="sequence_length" value="{{ sequence_length or default_sequence_length }}" min="1" max="200" />
+
+            <button type="submit">Run Prediction</button>
+        </form>
+
+        {% if output %}
+            <div class="alert success">
+                <strong>Prediction:</strong> {{ output }}<br />
+                <strong>Confidence:</strong> {{ confidence }}%
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="alert error">
+                <strong>Error:</strong> {{ error }}
+            </div>
+        {% endif %}
+
+        <div class="info">
+            <p class="meta">Model: {{ model_name }}</p>
+            <p class="meta">Device: {{ device }}</p>
+            <p class="meta">Accepted formats: mp4, avi, mkv, webm, gif, 3gp, wmv, flv</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+dataset/
+*.h5
+*.pt
+*.pkl
+*.zip
