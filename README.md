@@ -47,6 +47,7 @@ Clone the repository and install dependencies:
 git clone https://github.com/upreti-1/DEEPFAKE_DETECTION_USING_DEEP_LEARNING.git
 cd DEEPFAKE_DETECTION_USING_DEEP_LEARNING
 pip install -r requirements.txt
+```
 
 
 📊 Usage
