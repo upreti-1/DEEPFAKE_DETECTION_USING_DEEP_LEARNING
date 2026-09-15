@@ -58,15 +58,19 @@ python src/preprocessing/preprocess.py --input data/raw --output data/processed
 python src/training/train.py --model cnn --epochs 50 --batch_size 32
 
 ### 3. Evaluate Model
+```bash
 python src/evaluation/evaluate.py --model saved_model.h5 --test data/processed/test
+```
 
 
 
-##📈 Results
+## 📈 Results
+
 Robust detection of manipulated frames
 Training curves and confusion matrices available in results/
 
-##🙌 Acknowledgements
+
+## 🙌 Acknowledgements
 FaceForensics++ Dataset
 Celeb-DF Dataset
 Open-source deep learning community
