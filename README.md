@@ -50,21 +50,21 @@ pip install -r requirements.txt
 ```
 
 
-📊 Usage
-1. Preprocess Dataset
+##📊 Usage
+### 1. Preprocess Dataset
 python src/preprocessing/preprocess.py --input data/raw --output data/processed
 
-2. Train Model
+### 2. Train Model
 python src/training/train.py --model cnn --epochs 50 --batch_size 32
 
-3. Evaluate Model
+### 3. Evaluate Model
 python src/evaluation/evaluate.py --model saved_model.h5 --test data/processed/test
 
-📈 Results
+##📈 Results
 Robust detection of manipulated frames
 Training curves and confusion matrices available in results/
 
-🙌 Acknowledgements
+##🙌 Acknowledgements
 FaceForensics++ Dataset
 Celeb-DF Dataset
 Open-source deep learning community
